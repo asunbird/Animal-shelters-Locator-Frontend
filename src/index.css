@@ -85,11 +85,11 @@ header {
     top: 0;
     z-index: 100; /* Above Leaflet controls */
     box-sizing: border-box;
-    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    justify-content: flex-start;
+
 }
 
 .header-top {
@@ -103,6 +103,28 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.logo {
+  position: sticky;
+  left: 20px;
+  width: 160px;
+  height: fit-content;
+  padding: 0;
+  margin: 0 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.logo .logo-icon {
+  width: 28px;
+  height: 28px;
 }
 
 .level-badge {
@@ -290,14 +312,48 @@ header {
   box-shadow: 0 4px 8px rgba(173, 160, 217, 0.3);
 }
 
+.lang-switch-container {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.lang-switch-container .lang-toggle-btn {
+  background: transparent;
+  width: 44px;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 0;
+  margin: 0 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.lang-switch-container .lang-toggle-btn .lang-toggle-point {
+  background: var(--bg-base);
+  width: 4px;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 8px 8px;
+  margin: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
 main {
     width: 100%;
     flex: 1;
-    background-color: var(--bg-base);
-    border: var(--text-main) 1px solid;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    margin-top: 0;
     margin-bottom: 60px; /* Space for fixed footer */
 }
 

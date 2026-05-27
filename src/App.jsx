@@ -6,11 +6,38 @@ function App() {
   return (
 
       <section id="center">
-        <header></header>
+        <header>
 
-        <div>
-          <h1>Get started</h1>
-        </div>
+            <div className="logo">
+              <img className="logo-icon" src="/public/LOGO-icon.svg" alt="Pet Map Logo" />
+              pet map
+            </div>
+
+            <div className="level-badge">
+              <span>Level 1</span>
+              <div className="level-progress-bar">
+                <div className="progress-fill" style={{ width: '50%' }}></div>
+              </div>
+            </div>
+
+            <div className="lang-switch-container">
+              <div className="lang-ES-btn">ES</div>
+              <div className="lang-toggle-btn">
+                <div className="lang-toggle-point"></div>
+              </div>
+              <div className="lang-EN-btn">EN</div>
+            </div>
+            
+
+            <nav></nav>
+
+        </header>
+
+        <main>
+          <div>
+            <h1>Get started</h1>
+          </div>
+        </main>
 
         <footer></footer>
       </section>
