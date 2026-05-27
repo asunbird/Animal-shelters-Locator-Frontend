@@ -347,6 +347,49 @@ header {
   transition: all 0.2s;
 }
 
+.nav-links {
+  display: flex;
+  margin-left: 36%;
+}
+.nav-links ol, .nav-links ul {
+	list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 12px;
+  }
+.nav-links li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-links li a {
+    color: var(--clr-text-main); /* main text color "black" */
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 2px var(--clr-accent-shadow);
+    transition: transform 0.3s ease-in-out;
+}
+.nav-links li a:hover {
+    transform: scale(1.05);
+}
+.nav-links li a:active {
+    transform: scale(0.95);
+}
+li.nav-sections {
+  text-decoration: underline;
+  border: none;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+li.autorisation a {
+  text-decoration: none;
+  border: 1px solid var(--text-muted);
+  padding: 2px 12px;
+  border-radius: 12px;
+}
+
 main {
     width: 100%;
     flex: 1;

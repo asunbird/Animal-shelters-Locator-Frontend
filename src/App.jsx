@@ -29,7 +29,13 @@ function App() {
             </div>
             
 
-            <nav></nav>
+            <nav className="nav-links">
+              <ul>
+                <li className="nav-sections"><a href="#" >Home</a></li>
+                <li className="nav-sections"><a href="#" >About</a></li>
+                <li className="autorisation"><a href="#" >Sign in</a></li>
+              </ul>
+            </nav>
 
         </header>
 
