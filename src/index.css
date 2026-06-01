@@ -34,7 +34,7 @@ html, body, #root {
 }
 
 body {
-  background-image: url("src/assets/bg/bg-desktop-level0.svg");
+  background-image: url("src/assets/bg/Desktop-BG-Level-0-desert.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
