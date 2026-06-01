@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import logoIcon from '/src/assets/LOGO-icon.svg';
 import mapImage from '/src/assets/MAP-pic.png';
 
@@ -29,12 +30,12 @@ function Home () {
                 </div>
 
                 <nav className="nav-links">
-                    <ul>
-                        <li className="nav-sections"><a href="#" >Home</a></li>
-                        <li className="nav-sections"><a href="#" >About</a></li>
-                        <li className="autorisation"><a href="#" >Sign in</a></li>
-                    </ul>
+                        <Link className="nav-sections" to="/">Home</Link>
+                        <Link className="nav-sections" to="/about">About</Link>
+                        <Link className="nav-sections" to="/contact">Contact</Link>
+                        <Link className="autorisation" to="/signin">Sign in</Link>
                 </nav>
+                
  
             </header>
 

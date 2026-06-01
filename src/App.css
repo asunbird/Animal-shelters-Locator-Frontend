@@ -1,8 +1,7 @@
 
-#center {
-  display: grid;
-  grid-template-rows: 80px 1fr 60px;
-  grid-template-columns: 1fr;
-  place-content: flex-start;
-  place-items: center;
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
