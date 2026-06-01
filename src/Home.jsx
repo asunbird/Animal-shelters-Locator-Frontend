@@ -22,14 +22,14 @@ function Home () {
                 </div>
 
                 <div className="lang-switch-container">
-                    <div className="lang-ES-btn">ES</div>
+                    <div className="lang-ES-btn jost-700">ES</div>
                     <div className="lang-toggle-btn">
                         <div className="lang-toggle-point"></div>
                     </div>
-                    <div className="lang-EN-btn">EN</div>
+                    <div className="lang-EN-btn jost-700">EN</div>
                 </div>
 
-                <nav className="nav-links">
+                <nav className="nav-links jost-700">
                         <Link className="nav-sections" to="/">Home</Link>
                         <Link className="nav-sections" to="/about">About</Link>
                         <Link className="nav-sections" to="/contact">Contact</Link>
@@ -41,7 +41,7 @@ function Home () {
 
             <main>
                 <div>
-                    <h2>Find the animal shelter near you</h2>
+                    <h2 className="jost-700">Find the animal shelter near you</h2>
                     <div className="search-bar-container">
                         <input className="search-input" type="text" placeholder="Enter your city" ></input>
                         <button className="search-button">Search</button>
