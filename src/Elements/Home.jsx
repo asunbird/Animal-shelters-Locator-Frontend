@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import logoIcon from '/src/assets/LOGO-icon.svg';
+import logoIcon from '/src/assets/Logo-PetMap.svg';
 
 const DEFAULT_CENTER = [40.7128, -74.0060];
 
@@ -56,11 +56,10 @@ function Home () {
     }
 
     return (
-        <section id="center">
+        <section id="home">
             <header>
-               <div className="logo">
+               <div>
                     <img className="logo-icon" src={logoIcon} alt="Pet Map Logo" />
-                    pet map
                 </div>
 
                 <div className="level-badge">
@@ -129,7 +128,13 @@ function Home () {
                 </section>
             </main>
 
-            <footer></footer>
+            <footer className="libre-franklin-700">
+                © 2026 Pet Map | 
+                <a href="https://github.com/asunbird/Animal-shelters-Locator-Frontend" target="_blank" >
+                    GitHub
+                </a>
+            </footer>
+            
         </section>
     );
 }

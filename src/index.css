@@ -47,14 +47,11 @@ html, body, #root {
   text-align: center;
 }
 
-body {
-  background-image: url("src/assets/bg/Desktop-BG-Level-0-desert.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+header, main, footer {
+  width: 100%;
 }
 
-#center {
+#home {
   display: grid;
   grid-template-rows: 80px 1fr 60px;
   grid-template-columns: 1fr;
@@ -79,12 +76,7 @@ body {
   z-index: 1;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+
 
 h1 {
   font-size: 56px;
@@ -139,26 +131,11 @@ header {
   gap: 15px;
 }
 
-.logo {
-  position: sticky;
-  left: 20px;
-  width: 160px;
-  height: fit-content;
-  padding: 0;
-  margin: 0 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 4px;
-}
 
-.logo .logo-icon {
-  width: 28px;
-  height: 28px;
+.logo-icon {
+  width: 8em;
+  height: auto;
+  margin: auto 20px;
 }
 
 .level-badge {

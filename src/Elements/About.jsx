@@ -46,7 +46,12 @@ function About () {
             
             </main>
             
-            <footer></footer>
+            <footer className="libre-franklin-700">
+                © 2026 Pet Map | 
+                <a href="https://github.com/asunbird/Animal-shelters-Locator-Frontend" target="_blank" >
+                    GitHub
+                </a>
+            </footer>
 
         </section>
     )
