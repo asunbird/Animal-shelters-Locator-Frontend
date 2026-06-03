@@ -8,7 +8,7 @@
   --text-muted: #8C7A73;
   --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 
-  /* Font Families */
+  /* ... Font Families ... */
   /* <weight>: Use a value from 100 to 900 */
   .jost-700 { /* Bold - for UpperCase headings and labels */
     font-family: "Jost", sans-serif;
@@ -71,6 +71,8 @@ body {
   margin: 10vh auto;
 }
 
+/* ... Map Search Styles ... */
+
 
 /* Ensure Leaflet z-index stays below interactive UI elements like the Drawer */
 .leaflet-container {
@@ -106,6 +108,7 @@ p {
   margin: 0;
 }
 
+button { text-decoration: none; }
 
 header {
     width: 100%;
@@ -474,6 +477,7 @@ main {
   background: var(--primary-accent);
   color: black;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .map-container {
@@ -485,6 +489,18 @@ main {
     justify-content: center;
     border: 1px solid var(--text-muted);
     margin-top: 400px;
+}
+
+#map-container {
+    width: 100%;
+    min-height: 450px;
+    margin-top: 24px;
+}
+
+#map-container .leaflet-container {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
 }
 
 .map {
