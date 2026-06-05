@@ -1,14 +1,11 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import Elements from './Elements.jsx'
 import Error from './Error.jsx'
 import Home from './Home.jsx'
-import EvolvingBackground from "./EvolvingBackground.jsx";
 import './index.css'
 
 const router = createBrowserRouter([
@@ -26,10 +23,10 @@ const router = createBrowserRouter([
   }
 ]);
 
-React.DOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <StrictMode>
     <RouterProvider router={router} />
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );
 
