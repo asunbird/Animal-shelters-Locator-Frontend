@@ -394,7 +394,8 @@ main {
   transform: scale(1.15);
 }
 
-
+/* -------------------------------- */
+/* Footer Styles */
 footer {
     width: 100%;
     height: 60px;
@@ -410,9 +411,11 @@ footer a {
     color: white;
     text-decoration: underline;
     font-weight: bold;
-    margin: 0 10px;
+    margin: 0 10px; 
 }
 
+
+/* -------------------------------- */
 /* Responsive Styles */
 @media (max-width: 768px) {
     header {
