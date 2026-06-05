@@ -78,38 +78,54 @@ export function Map() {
 
 
       return (
-        <section id="map-search" className="leaflet-container"> 
-            <div className="map-navigation">
+        <section id="map-search" className="leaflet-container">
+            <header>
                 <div>
-                    <Link className="home-btn" to="/">
-                        <img className="icon" src={homeIcon} alt="Home" />
-                        <p className="nav-sections">Home</p>
-                    </Link>
-                </div>
-            </div>  
+                    <div>
+                        <Link className="home-btn" to="/">
+                            <img className="icon" src={homeIcon} alt="Home" />
+                            <p className="nav-sections">Home</p>
+                        </Link>
+                    </div>
+                </div> 
 
-            <div className="search-bar-container">
-                <input id="location-input" className="search-input" type="text"
-                    placeholder="Enter your city" name="search" required 
-                />
-                <button 
-                    id="search-btn" className="search-button" type="button" 
-                    >
-                    Search
-                </button>
-            </div> 
-            <div className="flex-row margin-h-20">
-                <span id="map-switcher-map" className="libre-franklin-700 float-right">MAP</span>
-                <div className="round-container">
-                    <div id="map-switcher" className="round-swith-btn float-right"></div>
-                </div>
-                <span id="map-switcher-list" className="libre-franklin-700 float-right">LIST</span>
-            </div> 
+                <div className="search-bar-container">
+                    <input id="location-input" className="search-input" type="text"
+                        placeholder="Enter your city" name="search" required 
+                    />
+                    <button 
+                        id="search-btn" className="search-button" type="button" 
+                        >
+                        Search
+                    </button>
+                </div> 
 
-            <div className="map-navigation">
-                <div id="favorites"><p id="favorites-count" className="icon-text libre-franklin-700">0</p></div>
-                <p className="libre-franklin-700">Favorites</p>
-            </div>   
+                <div className="flex-row margin-h-20">
+                    <span id="map-switcher-map" className="libre-franklin-700 float-right">MAP</span>
+                    <div className="round-container">
+                        <div id="map-switcher" className="round-swith-btn float-right"></div>
+                    </div>
+                    <span id="map-switcher-list" className="libre-franklin-700 float-right">LIST</span>
+                </div> 
+
+                <div>
+                    <div id="favorites">
+                        <p id="favorites-count" className="icon-text libre-franklin-700">0</p>
+                    </div>
+                    <p className="libre-franklin-700">Favorites</p>
+                </div> 
+            </header>
+            <main>
+                <div className="hero">
+                    <div className="round-container-vert">
+                        <div id="map-switcher-zoom-plus" className="round-swith-btn"><p className="jost-700">+</p></div>
+                        <div id="map-switcher-zoom-minus" className="round-swith-btn"><p className="jost-700">-</p></div>
+                    </div> 
+                </div>
+                
+            </main>
+            <footer></footer>
+            
         </section>
     )
 }
