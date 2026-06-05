@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import logoIcon from '/src/assets/Logo-PetMap.svg';
+import gitHub from '/src/assets/GitHub.png';
 
 // Home component with header, main content, and footer
 export function Home() {
@@ -61,6 +62,7 @@ export function Home() {
 
             <footer className="libre-franklin-700">
                 © 2026 Pet Map |
+                <img className="github" src={gitHub} alt="GitHub" />
                 <a href="https://github.com/asunbird/Animal-shelters-Locator-Frontend" target="_blank" >
                     GitHub
                 </a>
