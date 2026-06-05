@@ -1,10 +1,12 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoIcon from '/src/assets/Logo-PetMap.svg';
 import gitHub from '/src/assets/GitHub.png';
 
 // Home component with header, main content, and footer
 export function Home() {
+    const navigate = useNavigate();
+
     return (
         <section id="home">
             <header>
@@ -48,11 +50,7 @@ export function Home() {
                             name="search"
                             required
                         />
-                        <button
-                            id="search-btn"
-                            className="search-button"
-                            type="button" 
-                            >
+                        <button onClick={()=> navigate("map")} id="search-btn" className="search-button" type="button" >
                             Search
                         </button>
                     </div>
@@ -75,6 +73,7 @@ export function Home() {
 
 
 export function Map() {
+
 
       return (
         <section id="map-search">
