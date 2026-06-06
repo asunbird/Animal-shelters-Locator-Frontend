@@ -388,7 +388,41 @@ main {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 1);
 }
+/* ... Profile Settings ... */
 
+#contact-settings {
+  position: fixed;
+  top: 16vh;
+  left: 18vw;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  width: 60%;
+  height: fit-content;
+  margin: 0;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 1);
+}
+form .user-contacts {
+  display: flex;
+}
+
+.close-btn {
+  width: fit-content;
+  text-decoration: none;
+  border: 1px solid var(--text-muted);
+  padding: 2px 12px;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+
+  color: var(--clr-text-main); /*  gray text color */
+  font-size: 1.4rem;
+  text-shadow: 1px 1px 2px var(--clr-accent-shadow);
+}
 
 /* --------------- .................... ----------------- */
 /* ... Map Search Styles ... */

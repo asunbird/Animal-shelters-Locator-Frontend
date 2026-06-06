@@ -3,13 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 // Import icons
 import logoIcon from '/src/assets/Logo-PetMap.svg';
 import gitHub from '/src/assets/GitHub.png';
-import homeIcon from '/src/assets/icons/Home-icon.svg';
+import { Outlet } from "react-router-dom";
 
-import Map from './Home.jsx';
 
 
 // USER Profile-Home component with header, main content, and footer
-function ProfileHome() {
+export function ProfileHome() {
     const navigate = useNavigate();
     return (
         <section id="profile-home">
@@ -31,17 +30,12 @@ function ProfileHome() {
                     <div id="lang-EN-btn" className=" jost-700">EN</div>
                 </div>
 
-                <div>
-                    <Link className="home-btn" to="/">
-                        <img className="icon" src={homeIcon} alt="Home" />
-                        <p className="nav-sections">Home</p>
-                    </Link>
-                </div>
 
                 <nav className="nav-links jost-700"> 
-                    <Link className="autorisation" to="/signin">
-                        Sign in
+                    <Link className="autorisation" to="profilesettings">
+                        Profile Settings
                     </Link>
+                    <Outlet/>
                     <Link className="nav-sections" to="/about">About</Link>
                 </nav>
                 <div className="fav-container flex-row">
@@ -63,7 +57,7 @@ function ProfileHome() {
                             name="search"
                             required
                         />
-                        <button onClick={()=> navigate("./map")} id="search-btn" 
+                        <button onClick={()=> navigate("map")} id="search-btn" 
                             className="search-button" type="button" >
                             Search
                         </button>
@@ -81,6 +75,34 @@ function ProfileHome() {
     );
 }
 
+export function ProfileSettings() {
+    return (
+        <section id="profile-settings">
+            <div id="contact-settings">
+                <form id="user-contacts" action="">
+                    <div>Personal contacts data</div>
+                    <input type="text" placeholder="Username" /><br/>
+                    <input type="password" placeholder="Password" /><br/>
+                    <button type="submit" id="submit-btn" >
+                        Save Changes
+                    </button><br/>
+                    <input type="email" placeholder="Email Address" /><br/>
+                    <button type="button">Reset Password</button>
+                </form><br/>
+                <div id="favorites-settings">
+                    <div id="level-settings" className="libre-franklin-700">Favorites list Settings</div>
+                    <button type="button">Share Favorites list</button>
+                </div><br/>
+                <div id="level-settings" className="libre-franklin-700">Level Settings</div><br/>
+                 <button className="libre-franklin-700" type="button">
+                    <Link to="/profilehome">Close X</Link>   
+                </button>
+            </div>
+        </section>
+    )
+}
 
-export default ProfileHome;
+const ProfileElements =()=>{
+}
+export default ProfileElements;
 

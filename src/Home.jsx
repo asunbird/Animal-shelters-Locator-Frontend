@@ -6,6 +6,7 @@ import gitHub from '/src/assets/GitHub.png';
 import homeIcon from '/src/assets/icons/Home-icon.svg';
 
 
+
 // Home component with header, main content, and footer
 export function Home() {
     const navigate = useNavigate();
