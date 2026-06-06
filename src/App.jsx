@@ -4,7 +4,7 @@ import {
   Home, 
   Map 
 } from './Home.jsx';
-import { About, Contact, Info, Address } from './Elements.jsx';
+import { About, Info, Contact } from './Elements.jsx';
 import Error from  './Error.jsx';
 import SignIn from  './SignIn.jsx';
 import EvolvingBackground from './EvolvingBackground.jsx';
@@ -20,9 +20,8 @@ function App() {
             <Route path="/map" element={<Map />} />
             <Route path="/about" element={<About />} >
                 <Route path="/about/info" element={<Info />} />
-                <Route path="/about/address" element={<Address />} />
+                <Route path="/about/contact" element={<Contact />} />
             </Route>
-            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>

@@ -32,13 +32,19 @@ export function Home() {
                     <div className="lang-EN-btn jost-700">EN</div>
                 </div>
 
-                <nav className="nav-links jost-700">  
-                    <Link className="nav-sections" to="/about">About</Link>
-                    <Link className="nav-sections" to="/contact">Contact</Link>
+                <nav className="nav-links jost-700"> 
                     <Link className="autorisation" to="/signin">
                         Sign in
                     </Link>
+                    <Link className="nav-sections" to="/about">About</Link>
                 </nav>
+
+                <div className="fav-container flex-row">
+                    <div id="favorites">
+                        <p id="favorites-count" className="icon-text libre-franklin-700">0</p>
+                    </div>
+                    <p className="libre-franklin-700">Favorites</p>
+                </div> 
             </header>
             <main>
                 <div className="home-content">
@@ -108,7 +114,7 @@ export function Map() {
                     <span id="map-switcher-list" className="libre-franklin-700 float-right">LIST</span>
                 </div> 
 
-                <div>
+                <div className="fav-container flex-row">
                     <div id="favorites">
                         <p id="favorites-count" className="icon-text libre-franklin-700">0</p>
                     </div>
@@ -124,8 +130,7 @@ export function Map() {
                 </div>
                 
             </main>
-            <footer></footer>
-            
+
         </section>
     )
 }

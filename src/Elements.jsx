@@ -17,7 +17,7 @@ export function About() {
             </p>
             <p>My Current URL Location is {currentLocation.pathname}</p><br/>
             <Link to="info">Information</Link><br/>
-            <Link to="address">Address</Link><br/>
+            <Link to="contact">Contact</Link><br/>
             <Outlet/>
             <div>
                 <Link className="home-btn" to="/">
@@ -29,22 +29,6 @@ export function About() {
     )
 }
 
-export function Contact() {
-    let currentLocation = useLocation();
-    return (
-        <section id="contact">
-            <div>Contact Support</div>
-            <p>My Current URL Location is {currentLocation.pathname}</p><br/>
-            <div>
-                <Link className="home-btn" to="/">
-                    <img className="icon" src={homeIcon} alt="Home" />
-                    <p className="nav-sections">Home</p>
-                </Link>
-            </div>
-
-        </section>
-    )
-}
 
 export function Info() {
     return (
@@ -52,9 +36,9 @@ export function Info() {
     )
 }
 
-export function Address() {
+export function Contact() {
     return (
-        <div>Address</div>
+        <div>Contact</div>
     )
 }
 

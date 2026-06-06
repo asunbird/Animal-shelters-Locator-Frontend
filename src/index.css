@@ -1,6 +1,7 @@
 /* -------------------------------- */
 /* Global Styles and Variables */
 :root {
+  --bg-cyan-blue: #CDE6E0;
   --bg-base: #F2EFEB;
   --primary-accent: #F2ACAC;      /* Salmon/Pink */
   --secondary-accent: #ADA0D9;    /* Periwinkle Purple */
@@ -9,6 +10,8 @@
   --text-main: #5D4A44;
   --text-muted: #8C7A73;
   --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  --black: #000000;
+  --white: #FFFFFF;
 
   /* ... Font Families ... */
   /* <weight>: Use a value from 100 to 900 */
@@ -32,8 +35,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
+
+/* Color Styles */
+.bg-cyan-blue {
+  background-color: var(--bg-cyan-blue);
+}
+.text-black { color: var(--black); }
+.text-white { color: var(--white); }
 
 html, body, #root {
   margin: 0;
@@ -51,17 +60,19 @@ main, footer {
   width: 100%;
   height: fit-content;
 }
+main { padding: 20px; }
 header {
     width: 100%;
     min-height: 80px;
     position: sticky;
+    padding: 20px;
     margin: 0;
     top: 0;
     z-index: 100; /* Above Leaflet controls */
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 }
 
@@ -97,6 +108,7 @@ span {
 .flex-row {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 8px;
 }
 .flex-column {
@@ -355,7 +367,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 40px 20px;
+    padding: 0;
     margin: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.8);
@@ -371,7 +383,10 @@ main {
   z-index: 1;
   box-sizing: border-box;
 }
-
+.fav-container{
+  width: 12%;
+  padding: 4px;
+}
 #favorites {
   width: 36px;
   height: 36px;
@@ -395,7 +410,7 @@ main {
   font-size: 16px;
   border: 1px solid var(--text-muted);
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   border-radius: 20px;
 }
 .search-bar-container .search-input {
