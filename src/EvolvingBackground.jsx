@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
 import './EvolvingBackground.css';
+import { useBackgroundTimer } from './hooks/useBackgroundTimer';
+
 
 const backgroundImages = [
   new URL('./assets/BGs/Desktop - Level-0.svg', import.meta.url).href,
@@ -11,27 +12,10 @@ const backgroundImages = [
   new URL('./assets/BGs/Desktop - Level-6.svg', import.meta.url).href,
 ];
 
-const EvolvingBackground = ({ children }) => {
-  const [level, setLevel] = useState(0); // Starts at index 0
 
-  useEffect(() => {
-    // 60000ms = 1 minute per level, 180000ms = 3 minutes per level
-    const timePerLevel = 5000;
-    const maxLevel = backgroundImages.length - 1;
-
-    const timer = setInterval(() => {
-      setLevel((prevLevel) => {
-        if (prevLevel >= maxLevel) {
-          clearInterval(timer);
-          return prevLevel;
-        }
-        return prevLevel + 1;
-      });
-    }, timePerLevel);
-
-    return () => clearInterval(timer);
-  }, []);
-
+function EvolvingBackground({ children }) {
+  const currentLevel = useBackgroundTimer();
+  
   return (
     <div className="app-container">
       {/* Background Layers */}
@@ -40,7 +24,7 @@ const EvolvingBackground = ({ children }) => {
           <div
             key={index}
             // Add the 'active' class only to the current level's image
-            className={`bg-layer ${index === level ? 'active' : ''}`}
+            className={`bg-layer ${index === currentLevel ? 'active' : ''}`}
             style={{ backgroundImage: `url(${imgSrc})` }}
           />
         ))}
@@ -52,6 +36,6 @@ const EvolvingBackground = ({ children }) => {
       </div>
     </div>
   );
-};
+}
 
 export default EvolvingBackground;
