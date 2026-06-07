@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 // perfectly paced cumulative thresholds
+/*
 const LEVEL_THRESHOLDS = [
   0,                   // Level 0: 0 min
   2 * 60 * 1000,       // Level 1: 2 min 
@@ -10,7 +11,19 @@ const LEVEL_THRESHOLDS = [
   14 * 60 * 1000,      // Level 5: 14 min (10+4)
   20 * 60 * 1000,       // Level 6: 20 min (14+6)
 ];
+*/
 
+// level timer for testing
+// 60000ms = 1 minute per level, 180000ms = 3 minutes per level
+const test_timer = [
+    0,                  // Level 0: 0 min
+  1 * 60 * 1000,       // Level 1: 1 min 
+  1 * 60 * 1000,       // Level 2: 1 min (1+1)
+  1 * 60 * 1000,       // Level 3: 1 min (2+1)
+  1 * 60 * 1000,      // Level 4: 1 min (3+1)
+  1 * 60 * 1000,      // Level 5: 1 min (4+1)
+  2 * 60 * 1000,       // Level 6: 2 min (5+2)
+];
 
 export const useBackgroundTimer = () => {
   const [level, setLevel] = useState(0);
@@ -39,8 +52,8 @@ export const useBackgroundTimer = () => {
 
         // 3. Determine the current level
         let currentLevel = 0;
-        for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
-          if (accumulatedTimeRef.current >= LEVEL_THRESHOLDS[i]) {
+        for (let i = test_timer.length - 1; i >= 0; i--) {
+          if (accumulatedTimeRef.current >= test_timer[i]) {
             currentLevel = i;
             break;
           }
