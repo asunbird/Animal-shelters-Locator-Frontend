@@ -14,16 +14,19 @@ const LEVEL_THRESHOLDS = [
 */
 
 // level timer for testing
-// 60000ms = 1 minute per level, 180000ms = 3 minutes per level
+// Each level increments by 60000ms (1 minute), cumulative
 const test_timer = [
     0,                  // Level 0: 0 min
-  1 * 60 * 1000,       // Level 1: 1 min 
-  1 * 60 * 1000,       // Level 2: 1 min (1+1)
-  1 * 60 * 1000,       // Level 3: 1 min (2+1)
-  1 * 60 * 1000,      // Level 4: 1 min (3+1)
-  1 * 60 * 1000,      // Level 5: 1 min (4+1)
-  2 * 60 * 1000,       // Level 6: 2 min (5+2)
+  1 * 60 * 1000,       // Level 1: 1 min cumulative
+  2 * 60 * 1000,       // Level 2: 2 min cumulative
+  3 * 60 * 1000,       // Level 3: 3 min cumulative
+  4 * 60 * 1000,       // Level 4: 4 min cumulative
+  5 * 60 * 1000,       // Level 5: 5 min cumulative
+  7 * 60 * 1000,       // Level 6: 7 min cumulative
 ];
+
+// Total cycle time: 7 minutes (then resets)
+const TOTAL_CYCLE_TIME = test_timer[test_timer.length - 1];
 
 export const useBackgroundTimer = () => {
   const [level, setLevel] = useState(0);
@@ -50,10 +53,13 @@ export const useBackgroundTimer = () => {
         accumulatedTimeRef.current += delta;
         localStorage.setItem("totalTimeSpent", accumulatedTimeRef.current.toString());
 
-        // 3. Determine the current level
+        // 3. Determine the current level with cycling
+        // Use modulo to cycle through levels (resets after reaching max)
+        const cycleTime = accumulatedTimeRef.current % TOTAL_CYCLE_TIME;
+        
         let currentLevel = 0;
         for (let i = test_timer.length - 1; i >= 0; i--) {
-          if (accumulatedTimeRef.current >= test_timer[i]) {
+          if (cycleTime >= test_timer[i]) {
             currentLevel = i;
             break;
           }
