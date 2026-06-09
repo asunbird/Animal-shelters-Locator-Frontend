@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import logoIcon from '/src/assets/Logo-PetMap.svg';
 import gitHub from '/src/assets/GitHub.png';
 import homeIcon from '/src/assets/icons/Home-icon.svg';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+
 
 
 
@@ -128,7 +130,19 @@ export function Map() {
                             <p className="jost-700">-</p>
                         </div>
                     </div> 
-                </div>   
+                </div>  
+
+                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <Marker position={[51.505, -0.09]}>
+    <Popup>
+      A pretty CSS3 popup. <br /> Easily customizable.
+    </Popup>
+  </Marker>
+</MapContainer> 
             </main>
         </section>
     )
