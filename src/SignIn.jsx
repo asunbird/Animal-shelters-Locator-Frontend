@@ -4,7 +4,7 @@ import homeIcon from '/src/assets/icons/Home-icon.svg';
 function SignIn() {
 
     return (
-        <section id="sign-in">
+        <section id="sign-in-container">
             <div>Sign in</div>
             <form id="sign-in-form" action="" method="">
                 <input type="text" placeholder="Username" />

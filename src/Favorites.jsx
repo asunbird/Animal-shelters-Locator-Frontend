@@ -4,7 +4,7 @@ import homeIcon from '/src/assets/icons/Home-icon.svg';
 function FavoritesList() {
 
     return (
-        <section id="favorites-list">
+        <section id="favorites-list-container">
             <h2 className="jost-700">Favorites List</h2>
             
             <div className="fav-list-card">Contacts card</div>

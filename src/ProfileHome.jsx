@@ -32,7 +32,7 @@ export function ProfileHome() {
 
 
                 <nav className="nav-links jost-700"> 
-                    <Link className="autorisation" to="profilesettings">
+                    <Link id="profile-settings-link" to="profilesettings">
                         Profile Settings
                     </Link>
                     <Outlet/>
@@ -78,7 +78,7 @@ export function ProfileHome() {
 export function ProfileSettings() {
     return (
         <section id="profile-settings">
-            <div id="contact-settings">
+            <div id="prof-settings-container">
                 <form id="user-contacts" action="">
                     <div>Personal contacts data</div>
                     <input type="text" placeholder="Username" /><br/>

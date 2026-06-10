@@ -4,14 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import logoIcon from '/src/assets/Logo-PetMap.svg';
 import gitHub from '/src/assets/GitHub.png';
 import homeIcon from '/src/assets/icons/Home-icon.svg';
+// Import the Map Container for Leaflet
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-
 
 
 
 // Home component with header, main content, and footer
 export function Home() {
     const navigate = useNavigate();
+
     return (
         <section id="home">
             <header>
@@ -32,7 +33,7 @@ export function Home() {
                     <div id="lang-EN-btn" className=" jost-700">EN</div>
                 </div>
                 <nav className="nav-links jost-700"> 
-                    <Link className="autorisation" to="/signin">
+                    <Link id="autorisation" to="/signin">
                         Sign in
                     </Link>
                     <Link className="nav-sections" to="/about">About</Link>
@@ -75,11 +76,11 @@ export function Home() {
 }
 
 
-
+// Rendering a Map
 export function Map() {
       return (
-        <section id="map-search" className="leaflet-container">
-            <header>
+        <section id="map-search">
+            <header id="map-navigation">
                 <div>
                     <div>
                         <Link className="home-btn" to="/">
@@ -90,7 +91,7 @@ export function Map() {
                         </Link>
                     </div>
                 </div> 
-                <div className="search-bar-container">
+                <div id="map-search-bar" className="search-bar-container">
                     <input id="location-input" className="search-input" type="text"
                         placeholder="Enter your city" name="search" required />
                     <button 
@@ -119,30 +120,28 @@ export function Map() {
                         Favorites
                     </p>
                 </div> 
-            </header>
-            <main>
-                <div className="hero">
-                    <div className="round-container-vert">
-                        <div id="map-switcher-zoom-plus" className="round-swith-btn">
-                            <p className="jost-700">+</p>
-                        </div>
-                        <div id="map-switcher-zoom-minus" className="round-swith-btn">
-                            <p className="jost-700">-</p>
-                        </div>
-                    </div> 
-                </div>  
 
+                <div className="round-container-vert">
+                    <div id="map-switcher-zoom-plus" className="round-swith-btn">
+                        <p className="jost-700">+</p>
+                    </div>
+                    <div id="map-switcher-zoom-minus" className="round-swith-btn">
+                        <p className="jost-700">-</p>
+                    </div>
+                </div> 
+            </header>
+            <main id="map-main-content">
                 <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker>
-</MapContainer> 
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[51.505, -0.09]}>
+                        <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                    </Marker>
+                </MapContainer> 
             </main>
         </section>
     )
