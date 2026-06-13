@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 // Import icons
 import homeIcon from '/src/assets/icons/Home-icon.svg';
@@ -38,6 +38,10 @@ function Map() {
         const saved = localStorage.getItem('paws_favorites');
         return saved ? JSON.parse(saved) : [];
   });
+
+    useEffect(() => {
+        localStorage.setItem('paws_favorites', JSON.stringify(favorites));
+    }, [favorites]);
   
     const toggleFavorite = (shelter) => {
         setFavorites(prev => {
@@ -153,7 +157,13 @@ function Map() {
                     const radius = 30000; // 30km
                     const overpassQuery = `
                         [out:json][timeout:25];
-                        nwr["amenity"="animal_shelter"](around:${radius},${lat},${lon});
+                        (
+                            nwr["amenity"="animal_shelter"](around:${radius},${lat},${lon});
+                            nwr["tourism"="animal_boarding"](around:${radius},${lat},${lon});
+                            nwr["tourism"="animal_breeding"](around:${radius},${lat},${lon});
+                            nwr["office"="association"](around:${radius},${lat},${lon});
+                            nwr["amenity"="veterinary"](around:${radius},${lat},${lon});
+                        );
                         out center;
                     `;
         
@@ -236,7 +246,7 @@ function Map() {
                 <div className="fav-container flex-row">
                     <div id="favorites">
                         <p id="favorites-count" className="icon-text libre-franklin-700">
-                            0
+                            {favorites.length}
                         </p>
                     </div>
                     <p className="libre-franklin-700">
@@ -273,6 +283,14 @@ function Map() {
                   const phone = tags['contact:phone'] || tags.phone;
                   const email = tags['contact:email'] || tags.email;
                   const openingHours = tags.opening_hours;
+                  const typeLabel = (() => {
+                    if (tags.amenity === 'animal_shelter') return 'Animal shelter';
+                    if (tags.amenity === 'veterinary') return 'Veterinary clinic';
+                    if (tags.tourism === 'animal_boarding') return 'Animal boarding';
+                    if (tags.tourism === 'animal_breeding') return 'Animal breeding';
+                    if (tags.office === 'association') return 'Association office';
+                    return tags.amenity || tags.tourism || tags.office || '';
+                  })();
                   
                   // Extract address information if available
                   const street = tags['addr:street'];
@@ -290,7 +308,12 @@ function Map() {
                     <Marker key={shelter.id} position={[lat, lon]} icon={DefaultIcon}>
                       <Popup>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
-                          <h3 style={{ margin: '0 0 8px 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{name}</h3>
+                          <div>
+                            <h3 style={{ margin: '0 0 8px 0', color: 'var(--text-main)', fontSize: '1.1rem' }}>{name}</h3>
+                            {typeLabel && (
+                              <p style={{ margin: '0 0 8px 0', color: '#555', fontSize: '0.95rem' }}>{typeLabel}</p>
+                            )}
+                          </div>
                           <button 
                             className={`heart-btn ${isFavorite(shelter.id) ? 'is-fav' : ''}`}
                             onClick={() => toggleFavorite(shelter)}
