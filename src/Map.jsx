@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'; // <-- user's input Location
 import { Link } from "react-router-dom";
 // Import icons
 import homeIcon from '/src/assets/icons/Home-icon.svg';
@@ -22,17 +23,60 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 // Rendering a Map
 function Map() {
+
+    // 1. Grab the router location
+    const locationRouter = useLocation();
+    const [searchQuery, setSearchQuery] = useState('');
+
     const { favorites, toggleFavorite, isFavorite } = useSaveFavorites();
     const [hasSearched, setHasSearched] = useState(false);
     const [initialMapCenter, setInitialMapCenter] = useState([40.417840, -3.688085]);
-    const [map, setMap] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [map, setMap] = useState(null); // Assuming save leaflet map instance here
+    
     const [isSearching, setIsSearching] = useState(false);
   
     const [shelters, setShelters] = useState([]);
     const [isLoadingShelters, setIsLoadingShelters] = useState(false);
 
     const [viewMode, setViewMode] = useState('map'); // 'map' | 'list' | 'favorites'
+
+    // 2. Add this effect to handle the incoming search from Home
+    useEffect(() => {
+        const query = locationRouter.state?.requestedLocation;
+        
+        // If we have a query AND the map has finished loading
+        if (query && map) {
+            setIsLoadingShelters(true);
+
+            // Fetch coordinates for the city the user typed
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        // Extract latitude and longitude
+                        const lat = parseFloat(data[0].lat);
+                        const lon = parseFloat(data[0].lon);
+
+                        // Move the leaflet map to this new location
+                        map.setView([lat, lon], 13);
+
+                        // Now that the map is in the right place, trigger your shelter search!
+                        // We use a tiny timeout to ensure the map has finished moving before fetching
+                        setTimeout(() => {
+                            fetchShelters();
+                        }, 500); 
+                    } else {
+                        alert("Location not found on map.");
+                        setIsLoadingShelters(false);
+                    }
+                })
+                .catch(err => {
+                    console.error("Geocoding error:", err);
+                    setIsLoadingShelters(false);
+                });
+        }
+    }, [locationRouter.state, map]); // Run this whenever the location state or map loads
+
 
  
     // Ensure map flies to search location if map wasn't ready during initial search

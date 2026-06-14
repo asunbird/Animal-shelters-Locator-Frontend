@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // Import icons
 import logoIcon from '/src/assets/Logo-PetMap.svg';
@@ -9,7 +10,18 @@ import gitHub from '/src/assets/GitHub.png';
 
 // Home component with header, main content, and footer
 function Home() {
+    // 1. Track what the user types
+    const [searchInput, setSearchInput] = useState('');
+  
+    // 2. Initialize the navigate function
     const navigate = useNavigate();
+
+    // 3. Create the onClick handler
+    const handleSearchClick = () => {
+        if (!searchInput.trim()) return; // Prevent searching if the input is empty
+        // Navigate to the map page AND pass the search the search input in the background
+        navigate('/map', { state: { requestedLocation: searchInput } }); 
+    };
 
     return (
         <section id="home">
@@ -52,15 +64,19 @@ function Home() {
                 <div className="home-content">
                     <h2 className="jost-700">FIND THE ANIMAL SHELTER NEAR YOU</h2>
                     <div className="search-bar-container">
+                        {/* Updates a state when user types */}
                         <input
+                            type="text"
+                            placeholder="Enter a city or location"
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
                             id="location-input"
                             className="search-input"
-                            type="text"
-                            placeholder="Enter your city" 
                             name="search"
                             required
                         />
-                        <button onClick={()=> navigate("/map")} id="search-btn" 
+                        {/* onClick event to Action Button */}
+                        <button onClick={handleSearchClick} id="search-btn" 
                             className="search-button" type="button" >
                             Search
                         </button>
