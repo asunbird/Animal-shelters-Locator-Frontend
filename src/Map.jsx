@@ -8,6 +8,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import ShelterCard from './PoiContacts.jsx';
 
 import { useSaveFavorites } from './hooks/saveFavorites';
+import { useLocationSearch } from './hooks/useLocationSearch';
 
 // Fix for default marker icon in leaflet with bundler
 import L from 'leaflet';
@@ -40,42 +41,8 @@ function Map() {
 
     const [viewMode, setViewMode] = useState('map'); // 'map' | 'list' | 'favorites'
 
-    // 2. Add this effect to handle the incoming search from Home
-    useEffect(() => {
-        const query = locationRouter.state?.requestedLocation;
-        
-        // If we have a query AND the map has finished loading
-        if (query && map) {
-            setIsLoadingShelters(true);
-
-            // Fetch coordinates for the city the user typed
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.length > 0) {
-                        // Extract latitude and longitude
-                        const lat = parseFloat(data[0].lat);
-                        const lon = parseFloat(data[0].lon);
-
-                        // Move the leaflet map to this new location
-                        map.setView([lat, lon], 13);
-
-                        // Now that the map is in the right place, trigger your shelter search!
-                        // We use a tiny timeout to ensure the map has finished moving before fetching
-                        setTimeout(() => {
-                            fetchShelters();
-                        }, 500); 
-                    } else {
-                        alert("Location not found on map.");
-                        setIsLoadingShelters(false);
-                    }
-                })
-                .catch(err => {
-                    console.error("Geocoding error:", err);
-                    setIsLoadingShelters(false);
-                });
-        }
-    }, [locationRouter.state, map]); // Run this whenever the location state or map loads
+    // 2. Add handle the incoming search from Home
+    useLocationSearch(map, setIsLoadingShelters, fetchShelters);
 
 
  
