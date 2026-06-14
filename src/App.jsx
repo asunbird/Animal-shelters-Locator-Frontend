@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home.jsx';
 import Map from './Map.jsx';
 
-import { About, Info, Contact } from './Elements.jsx';
+import { About, Info, Contact } from './About.jsx';
 import Error from  './Error.jsx';
 import SignIn from  './SignIn.jsx';
 import EvolvingBackground from './EvolvingBackground.jsx';

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import homeIcon from '/src/assets/icons/Home-icon.svg';
-import { useSaveFavorites } from './hooks/saveFavorites'; // Import your custom hook
+import { useSaveFavorites } from './hooks/saveFavorites'; // Import hook
+import logoIcon from '/src/assets/Logo-PetMap.svg'; // Import icons
 
 function FavoritesList() {
   // Grab the favorites array and the toggle function from your hook
@@ -8,6 +8,13 @@ function FavoritesList() {
 
   return (
         <section id="favorites-list-container">
+            <header>
+                <div>
+                    <Link className="home-btn" to="/">
+                        <img className="logo-icon" src={logoIcon} alt="Pet Map Logo" />
+                    </Link> 
+                </div> 
+            </header>
             <h2 className="jost-700">Favorites List</h2>
 
             {favorites.length === 0 ? (
@@ -53,12 +60,7 @@ function FavoritesList() {
                     );
                 })
             )}
-            <div style={{ marginTop: '24px' }}>
-                <Link className="home-btn" to="/">
-                    <img className="icon" src={homeIcon} alt="Home" />
-                    <p className="nav-sections">Home</p>
-                </Link>
-            </div>
+            
         </section>
     )
 }

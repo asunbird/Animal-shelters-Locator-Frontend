@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'; // <-- Added useCallback
 import { Link } from "react-router-dom";
-// Import icons
-import homeIcon from '/src/assets/icons/Home-icon.svg';
+import logoIcon from '/src/assets/Logo-PetMap.svg'; // Import icons
+
 // Import the Map Container for Leaflet
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import ShelterCard from './PoiContacts.jsx';
@@ -202,14 +202,9 @@ function Map() {
         <section id="map-search">
             <header id="map-navigation">
                 <div>
-                    <div>
-                        <Link className="home-btn" to="/">
-                            <img className="icon" src={homeIcon} alt="Home" />
-                            <p className="nav-sections">
-                                Home
-                            </p>
-                        </Link>
-                    </div>
+                    <Link className="home-btn" to="/">
+                        <img className="logo-icon" src={logoIcon} alt="Pet Map Logo" />
+                    </Link> 
                 </div> 
 
                 <form id="map-search-bar" className="search-bar-container" onSubmit={handleSearch}>

@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-// Import icons
-import logoIcon from '/src/assets/Logo-PetMap.svg';
-import gitHub from '/src/assets/GitHub.png';
-
-// Import the Map Container for Leaflet
-
-
+import logoIcon from '/src/assets/Logo-PetMap.svg'; // Import icons
+import gitHub from '/src/assets/GitHub.png'; // Import icons
 
 // Home component with header, main content, and footer
 function Home() {
@@ -46,10 +41,10 @@ function Home() {
                 </div>
 
                 <nav className="nav-links jost-700"> 
-                    {/* <Link className="nav-sections" to="/about">About</Link> */}
                     <Link id="autorisation" to="/signin">
                         Sign in
                     </Link>
+                    <Link className="nav-sections" to="/about">About</Link>
                 </nav>
 
                 {/* Favorites buton */}
@@ -64,6 +59,7 @@ function Home() {
                 <div className="home-content">
                     <h2 className="jost-700">FIND THE ANIMAL SHELTER NEAR YOU</h2>
                     <div className="search-bar-container">
+
                         {/* Updates a state when user types */}
                         <input
                             type="text"
@@ -83,6 +79,7 @@ function Home() {
                     </div>
                 </div>
             </main>
+
             <footer className="libre-franklin-700">
                 © 2026 Pet Map |
                 <img className="github" src={gitHub} alt="GitHub" />
@@ -93,8 +90,6 @@ function Home() {
         </section>
     );
 }
-
-
 
 export default Home;
 
